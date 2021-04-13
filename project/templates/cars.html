@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table" style="width:70%;margin-left:20%;">
+    <thead>
+      <tr>
+       
+        <th>Marka vozila</th>
+        <th>Model vozila</th>
+        <th>Godina proizvodnje</th>
+        <th>Registracijska oznaka</th>
+        <th>Boja vozila</th>
+        <th></th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in cars %}
+      <tr> 
+       
+          <td>{{ row.car_make }}</td>
+          <td>{{  row.car_model }}</td>
+          <td>{{  row.car_year }}</td>
+          <td>{{  row.color }}</td>
+          <td>{{  row.reg_plate }}</td>
+      
+  
+        <td>
+          <a href="" class="button is-info is-small" data-toggle="modal" data-target="#modaledit">Edit</a>
+          <a href="" class="button is-danger is-small" onclick="return confirm('Are You Sure For Delete?')">Delete</a>
+  
+        </td>
+   
+  
+       
+  
+    </tr>
+    {% endfor %}
+    <tr><td><button class="button is-info is-large" id="lanuchModal" type="submit">Dodaj vozilo</button></td></tr>
+    </tbody>
+    
+  </table>
+
+  {% endblock %}

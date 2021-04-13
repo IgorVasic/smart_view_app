@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="modal" class="modal">
+ 
+  <div class="modal-background">
+ 
+  <div style="width:50%; margin-top: 10%;" class="modal-content">
+ 
+    <div class="box">
+
+ 
+        <div class="media-content">
+ 
+          <div class="content">
+ 
+            <p>
+ 
+              <br>
+              <form method="POST" action="/profile">
+
+              
+              <div class="field">
+                <label class="label">Marka vozila</label>
+                <div class="control">
+                  <input class="input" name="car_make" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Model vozila</label>
+                <div class="control">
+                  <input class="input" name="car_model" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Registracijska oznaka</label>
+                <div class="control">
+                  <input class="input" name="reg_plate" type="text" placeholder="Text input" req>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Boja vozila</label>
+                <div class="control">
+                  <input class="input" name="color" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Godina proizvodnje</label>
+                <div class="control">
+                  <input class="input" name="car_year" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <hr>
+           
+            </p>
+ 
+          </div>
+
+         
+ 
+          <button class="button is-info is-large">Dodaj</button>
+ 
+          <button class="button is-danger is-large" id="closebtn">Zatvori prozor</button>
+ 
+        </div>
+      </form>
+
+      
+ 
+ 
+    </div>
+ 
+  </div>
+ 
+  <button class="modal-close is-large" aria-label="close"></button>
+
+</div>
+</div>
+ 
+
+<br>
+
+<br>
+<br>
+<table class="table" style="width:70%;margin-left:20%;">
+  <thead>
+    <tr>
+     
+      <th>Marka vozila</th>
+      <th>Model vozila</th>
+      <th>Godina proizvodnje</th>
+      <th>Registracijska oznaka</th>
+      <th>Boja vozila</th>
+      <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in cars %}
+    <tr> 
+     
+        <td>{{ row.car_make }}</td>
+        <td>{{  row.car_model }}</td>
+        <td>{{  row.car_year }}</td>
+        <td>{{  row.color }}</td>
+        <td>{{  row.reg_plate }}</td>
+    
+
+      <td>
+        <a href="" class="button is-info is-small" data-toggle="modal" data-target="#modaledit">Uredi</a>
+        <a href="" class="button is-danger is-small" onclick="return confirm('Da li ste sigurni da želite izbrisati vozilo {{ current_user.cars }}?')">izbriši</a>
+
+      </td>
+ 
+
+     
+
+  </tr>
+  {% endfor %}
+  <tr><td><button  class="button is-info is-medium" id="lanuchModal" type="submit">Dodaj vozilo</button></td></tr>
+  </tbody>
+  
+</table>
+  
+</div>
+
+
+<script>
+ 
+  $("#lanuchModal").click(function() {
+   
+    $(".modal").addClass("is-active"); 
+   
+  });
+   
+   
+   
+   
+  $(".modal-close").click(function() {
+   
+     $(".modal").removeClass("is-active");
+   
+  });
+   
+   
+   
+   
+  $("#closebtn").click(function() {
+   
+     $(".modal").removeClass("is-active");
+   
+  });
+   
+  </script>
+{% endblock %}

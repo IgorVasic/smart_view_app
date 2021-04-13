@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="modal" class="modal">
+ 
+  <div class="modal-background">
+ 
+  <div style="width:50%; margin-top: 10%;" class="modal-content">
+ 
+    <div class="box">
+
+ 
+        <div class="media-content">
+ 
+          <div class="content">
+ 
+            <p>
+ 
+              <br>
+              <form method="POST" action="/update_cars">
+              
+              <div class="field">
+                <label class="label">Marka vozila</label>
+                <div class="control">
+                  <input class="input" name="car_make" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Model vozila</label>
+                <div class="control">
+                  <input class="input" name="car_model" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Registracijska oznaka</label>
+                <div class="control">
+                  <input class="input" name="reg_plate" type="text" placeholder="Text input" req>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Boja vozila</label>
+                <div class="control">
+                  <input class="input" name="color" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Godina proizvodnje</label>
+                <div class="control">
+                  <input class="input" name="car_year" type="text" placeholder="Text input">
+                </div>
+              </div>
+              <hr>
+           
+            </p>
+ 
+          </div>
+
+         
+ 
+          <button class="button is-info is-large">Dodaj</button>
+ 
+          <button class="button is-danger is-large" id="closebtn">Zatvori prozor</button>
+ 
+        </div>
+      </form>
+
+      
+ 
+ 
+    </div>
+ 
+  </div>
+ 
+  <button class="modal-close is-large" aria-label="close"></button>
+
+</div>
+</div>
+<script>
+ 
+    $("#lanuchModal").click(function() {
+     
+      $(".modal").addClass("is-active"); 
+     
+    });
+     
+     
+     
+     
+    $(".modal-close").click(function() {
+     
+       $(".modal").removeClass("is-active");
+     
+    });
+     
+     
+     
+     
+    $("#closebtn").click(function() {
+     
+       $(".modal").removeClass("is-active");
+     
+    });
+     
+    </script>
+  {% endblock %}
